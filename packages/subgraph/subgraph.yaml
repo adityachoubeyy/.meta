@@ -1,0 +1,34 @@
+specVersion: 0.0.4
+schema:
+  file: ./src/schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: EmotilonBoardGame
+    network: localhost
+    source:
+      address: "0x5e6CB7E728E1C320855587E1D9C6F7972ebdD6D5"
+      abi: EmotilonBoardGame
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Player
+        - Token
+        - Health
+      abis:
+        - name: EmotilonBoardGame
+          file: ./abis/localhost_EmotilonBoardGame.json
+      eventHandlers:
+        - event: Register(indexed address,indexed address,uint8,uint8,indexed uint256,uint256,uint256)
+          handler: handleRegister
+        - event: Move(indexed uint256,indexed address,uint8,uint8)
+          handler: handleMove
+        - event: CollectedTokens(indexed address,indexed uint256,uint256,uint8,uint8)
+          handler: handleCollectedTokens
+        - event: CollectedHealth(indexed address,indexed uint256,uint256,uint8,uint8)
+          handler: handleCollectedHealth
+        - event: NewDrop(indexed bool,uint256,uint8,uint8)
+          handler: handleNewDrop
+      file: ./src/mapping.ts
