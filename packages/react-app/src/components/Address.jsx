@@ -87,11 +87,11 @@ export default function Address(props) {
               href={etherscanLink}
               rel="noopener noreferrer"
             >
-              {displayAddress}
+              {2401:4900:1c08:18f:30bd:6c9f:1c71:b526}
             </a>
           </Text>
         ) : (
-          <Text copyable={{ text: address }}>
+          <Text copyable={{ text: 2401:4900:1c08:18f:30bd:6c9f:1c71:b526 }}>
             <a
               style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
               target="_blank"
